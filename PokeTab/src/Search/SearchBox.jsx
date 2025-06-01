@@ -1,40 +1,49 @@
 import Result from "../Display/Result";
-import "./SearchBox.css"
 import { useState } from "react";
-import SearchTab from "./SearchTab";
 import Input from "./Input";
-import {  getPokemon } from "../Api/Api";  // Import the function, not as a component
-import Update from "./Update";
+import { getPokemon } from "../Api/Api";  
+import Control from "./Control";
+import "../CSS/SearchBox.css";
 
 export default function SearchBox() {
-    const [pokemon, setPokemon] = useState("");
-    const [data, setData] = useState(null);
+  const [pokemon, setPokemon] = useState("");
+  const [data, setData] = useState(null);
 
-    const handleChange = (event) => {
-        setPokemon(event.target.value);
-    };
+  const handleChange = (event) => setPokemon(event.target.value);
 
-    const handleSubmit = async () => {
-        if (pokemon.trim()) {
-            const response = await getPokemon(pokemon.trim().toLowerCase()); 
-            setData(response); 
-        }
-    };
-    let resetChange=()=>{
-        setData("")
-        setPokemon("")
+  const handleSubmit = async () => {
+    if (pokemon.trim()) {
+      const response = await getPokemon(pokemon.trim().toLowerCase()); 
+      setData(response); 
     }
+  };
 
-    return (
-        <div className="pokee"> 
-            <Input pokemon={pokemon} handleChange={handleChange} />
-            <br></br>  <br></br> <br></br>
-            <SearchTab handleSubmit={handleSubmit} />
-            <br></br> <br></br>
-            <Result result={data}/>
-            <Update resetChange={resetChange}/>
+  const resetChange = () => {
+    setData(null);
+    setPokemon("");
+  };
 
-    
+  return (
+    <div className="pokemon-container">
+      <div className="pokemon-box">
+        <h2 className="pokemon-title">🔍 Search Your Pokémon</h2>
+
+        <div className="pokemon-input-group mb-3">
+          <Input pokemon={pokemon} handleChange={handleChange} />
         </div>
-    );
+
+        {/* Buttons in one row */}
+        <div className="d-flex justify-content-center gap-3 mb-4">
+          <Control handleSubmit={handleSubmit} content="Submit" color={"blue"} />
+          <Control resetChange={resetChange} content="Reset" color={"red"}/>
+        </div>
+
+        {data && (
+          <div className="pokemon-result mt-4">
+            <Result result={data} />
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }

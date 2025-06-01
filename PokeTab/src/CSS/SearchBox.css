@@ -1,0 +1,44 @@
+.pokemon-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .pokemon-box {
+    background: #f5f5f5;
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pokemon-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #222;
+  }
+  
+  .pokemon-input-group {
+    text-align: center;
+  }
+  
+  .pokemon-result {
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 500px) {
+    .pokemon-box {
+      padding: 1.2rem;
+    }
+  
+    .pokemon-title {
+      font-size: 20px;
+    }
+  }
+  
