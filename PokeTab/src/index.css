@@ -1,0 +1,11 @@
+body {
+    background-image: url('Pokemon.jpeg');
+   
+    background-size: cover;  /* Ensures the image covers the whole screen */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating */
+    height: 100vh; /* Full-screen height */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
